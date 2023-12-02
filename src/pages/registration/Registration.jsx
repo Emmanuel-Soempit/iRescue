@@ -5,6 +5,7 @@ import IrescueIcon from '../../assets/i-rescue.svg'
 import RegistrationStepsReducer from '../../reducers/RegistrationStepsReducer'
 import { regSteps } from '../../utils/RegSteps'
 import OTPCard from '../../components/otp-card/OTPCard'
+import Mobile from '../../components/mobile_warning/Mobile'
 
 const initialState = {current: regSteps.signup}
 
@@ -25,7 +26,7 @@ function Registration() {
 
 
     return (
-        <div className={reg_wrapper}>
+        <>        <div className={reg_wrapper}>
 
             <img src={IrescueIcon} className={img_style}/>
 
@@ -47,6 +48,10 @@ function Registration() {
              }
 
         </div>
+        
+        <Mobile/>
+        </>
+
     )
 }
 
