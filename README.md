@@ -8,4 +8,4 @@ All React components within this project has their specific folder. Each folder 
 
 The project is an exact relica of the film design given abouve, hence it is majorly static and responsive only to desktop layouts.
 
-This project is hosted with firebase hosting, here is the link: 
+This project is hosted with firebase hosting, here is the link: https://irescue-d6156.web.app/
