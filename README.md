@@ -16,7 +16,7 @@ An error boundary was integrated into the project to avoid the famous "white-dea
 This project is hosted with firebase hosting, here is the link: https://irescue-d6156.web.app/
 
 
-#API
+# API
 Succesfully integrated with this project are the APIs for registration, otp verification and login. All forms were validated and check before submition, the dasboard page is guarded by a protected route, therefore it cannot be accessed by an unauthenticated user.
 
 In increasing the performance of the website, react memoization technique was used, therefore all components apart from the main pages were designed to be pure components - not in charge of their own state. 
