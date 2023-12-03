@@ -11,4 +11,4 @@ function CarCard({data}) {
     )
 }
 
-export default CarCard
+export default React.memo(CarCard)

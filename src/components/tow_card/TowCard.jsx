@@ -18,4 +18,4 @@ function TowCard() {
     )
 }
 
-export default TowCard
+export default React.memo(TowCard)

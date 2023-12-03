@@ -30,4 +30,4 @@ function LocationCard() {
     )
 }
 
-export default LocationCard
+export default React.memo(LocationCard)

@@ -1,32 +1,81 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { header_text, num_wrapper, otp_wrapper, verify_button } from './OTPStyles'
 import {useNavigate} from 'react-router-dom'
+import OtpInput from 'react-otp-input'
+import axios from 'axios'
+import Spinner from '../../utils/Spinner'
 
-function OTPCard({dispatcher}) {
+const OtpApiUrl = 'https://irescue.app/api/loginWithOtp'
 
+function OTPCard({ state, otp, setOtp, isLoading, setIsLoading, error, setError}) {
+
+    //Navigator
     const navigate = useNavigate() 
+   
 
-     const displayOTPNumber = () => {
-          let numbers = []
+    //post request to verify OTP
+    const postOtp = (otp, email) => {
+       axios.post(OtpApiUrl, {'otp': otp, email: email})
+           .then(response => {
+             console.log(response, email, otp)
+            
+                console.log('true')
+                setIsLoading(false)
+                navigate('/login')
+            })
+            .catch(error => {
+            console.log(error, email, otp)
+            setError(error)
+            setIsLoading(false)
+            })
+    }
 
-           for (let index = 0; index < 5; index++) {
-                  numbers.push(<div key={index} className='w-[18%] h-full bg-gray-300'></div>)
-                 }
+    useEffect(() => {
+         console.log(state)
+         setIsLoading(false)
+         setError('')
+    }, [])
 
-            return numbers     
-     }
 
+    //Haadler function for any input onChange in form
+    const handleOnOtpChanged = (val) => {
+        setOtp(val)
+    }
+
+     //Navigattion function
      const navigateToLogin = () => {
-         navigate('/login')
+        //  navigate('/login')
+
+         setIsLoading(!isLoading)
+         postOtp(otp, state.data.email)
+      
      }
+
 
     return (
         <div className={otp_wrapper}>
             <span className={header_text}>Validate your OTP</span>
+       
+            <OtpInput
+              value={otp}
+              onChange={(val) => handleOnOtpChanged(val)}
+              numInputs={4}
+              inputStyle={{
+                'background': 'gray',
+                'border': '0',
+                 'height': '35px',
+                  'width': '20px',
+              }}
+              renderSeparator={<span>-</span>}
+              renderInput={(props) => <input {...props} />}
+               />
 
-            <div className={num_wrapper}>
-               {displayOTPNumber()}
-            </div>
+
+            {isLoading && <Spinner/>}
+            
+            {error !== '' && 
+              <span className='text-[10px] text-red-700'>{error}</span>
+              }
 
             <button 
             onClick={navigateToLogin}
@@ -35,4 +84,4 @@ function OTPCard({dispatcher}) {
     )
 }
 
-export default OTPCard
+export default React.memo(OTPCard)

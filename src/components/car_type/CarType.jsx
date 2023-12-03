@@ -43,4 +43,4 @@ function CarType() {
     )
 }
 
-export default CarType
+export default React.memo(CarType)

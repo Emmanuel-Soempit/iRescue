@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { bottom_left, bottom_wrapper, cash_text, dashboard_card_wrapper, header_text, iRescue_button, switch_text, top_wrapper} from './DashboardCardStyles'
 import LocationCard from '../location_card/LocationCard';
 import CarType from '../car_type/CarType';
@@ -7,6 +7,8 @@ import { IoIosArrowDown } from "react-icons/io";
 import CashImg from '../../assets/cash.svg'
 
 function DashboardCard() {
+
+
     return (
         <div className={dashboard_card_wrapper}>
 
@@ -34,4 +36,4 @@ function DashboardCard() {
     )
 }
 
-export default DashboardCard
+export default React.memo(DashboardCard)

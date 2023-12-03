@@ -25,4 +25,4 @@ function VehicleCard({arrivalTime, priceRange}) {
     )
 }
 
-export default VehicleCard
+export default React.memo(VehicleCard)
