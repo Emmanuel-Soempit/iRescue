@@ -17,21 +17,16 @@ function OTPCard({ state, otp, setOtp, isLoading, setIsLoading, error, setError}
     const postOtp = (otp, email) => {
        axios.post(OtpApiUrl, {'otp': otp, email: email})
            .then(response => {
-             console.log(response, email, otp)
-            
-                console.log('true')
                 setIsLoading(false)
                 navigate('/login')
             })
             .catch(error => {
-            console.log(error, email, otp)
             setError(error)
             setIsLoading(false)
             })
     }
 
     useEffect(() => {
-         console.log(state)
          setIsLoading(false)
          setError('')
     }, [])

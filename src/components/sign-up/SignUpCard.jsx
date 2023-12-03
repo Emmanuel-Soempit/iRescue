@@ -25,11 +25,9 @@ function SignUpCard({ dispatcher, regDetails, setRegDetails, confirmPassword, se
       const postData = () => {
           axios.post(regApiUrl, regDetails )
             .then(response => {
-               console.log(response)
       
                   if(response.data.message === 'Account already exists')
                {
-                  console.log('Message:',response.data.message)
                   setFormError(`Oops: ${response.data.message}`)
                   // navigate('/login')
                   setIsLoading(false)

@@ -24,7 +24,6 @@ function LoginCard({loginDetails, setLoginDetails, error, setError, rememberMe, 
             }
             )
              .then(response => {
-                console.log(response)
                 setIsLoading(false)
                 setCurrentUser(response.data.user)
                 navigate(`/dashboard/${response.data.user.firstname}&${response.data.user.id}`)
@@ -36,7 +35,6 @@ function LoginCard({loginDetails, setLoginDetails, error, setError, rememberMe, 
                     setError({message: details.message, fault: 3})
                 }
                 setIsLoading(false)
-                console.log(details)
                 setLoginDetails({phone: '', password: ''})
             })  
     }
